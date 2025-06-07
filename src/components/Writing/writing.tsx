@@ -10,6 +10,7 @@ interface Post {
 }
 
 const Writing = () => {
+	const login = localStorage.getItem('login')
 	const [posts, setPosts] = useState<Post[]>([])
 	const [loading, setLoading] = useState(true)
 	const [newComment, setNewComment] = useState('')
@@ -101,21 +102,27 @@ const Writing = () => {
 													{post.name}
 												</p>
 												<div className='flex gap-2 mt-2 sm:mt-0'>
-													<button
-														onClick={() => {
-															setEditId(post.id)
-															setEditText(post.comment)
-														}}
-														className='px-3 py-1 rounded-md bg-gradient-to-r from-yellow-400 to-yellow-500 text-white font-medium shadow hover:brightness-110 transition'
-													>
-														Tahrirlash
-													</button>
-													<button
-														onClick={() => deletePost(post.id)}
-														className='px-3 py-1 rounded-md bg-gradient-to-r from-red-500 to-red-600 text-white font-medium shadow hover:brightness-110 transition'
-													>
-														O‘chirish
-													</button>
+													{login ? (
+														<div className='flex gap-1.5'>
+															<button
+																onClick={() => {
+																	setEditId(post.id)
+																	setEditText(post.comment)
+																}}
+																className='px-3 py-1 rounded-md bg-gradient-to-r from-yellow-400 to-yellow-500 text-white font-medium shadow hover:brightness-110 transition'
+															>
+																Tahrirlash
+															</button>
+															<button
+																onClick={() => deletePost(post.id)}
+																className='px-3 py-1 rounded-md bg-gradient-to-r from-red-500 to-red-600 text-white font-medium shadow hover:brightness-110 transition'
+															>
+																O‘chirish
+															</button>
+														</div>
+													) : (
+														<></>
+													)}
 												</div>
 											</div>
 

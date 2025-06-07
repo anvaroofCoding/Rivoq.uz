@@ -9,6 +9,12 @@ const App = () => {
 
 	const navigate = useNavigate()
 	const location = useLocation()
+	// const authDek = () => {
+	// 	const auth = localStorage.getItem('token')
+	// 	if (!auth) {
+	// 		navigate('/register')
+	// 	}
+	// }
 
 	const menuItems = [
 		{ label: 'Bosh sahifa', path: '/' },
@@ -37,6 +43,9 @@ const App = () => {
 	const toggleDropdown = (index: number) => {
 		setOpenDropdown(openDropdown === index ? null : index)
 	}
+	// useEffect(() => {
+	// 	authDek()
+	// }, [])
 
 	return (
 		<div className='flex flex-col dark:bg-neutral-900 bg-white min-h-screen'>
